@@ -1,0 +1,21 @@
+.game-card {
+    height: 100vh;
+    font-family: 'Open Sans', monospace;
+}
+
+body {
+    background-image: linear-gradient(to right, #e35282, #ea3434);
+}
+
+#personInfo {
+    padding-bottom: 1px;
+}
+
+#buttonsField {
+    padding-top: 1px;
+}
+
+.m-0 {
+    font-size: large;
+    font-weight: 600;
+}
