@@ -53,22 +53,6 @@ const personGenerator = {
         }
     }`,
 
-    middleNameJson:`{
-        "count": 10,
-        "list": {     
-            "id_1": "Александров",
-            "id_2": "Максимов",
-            "id_3": "Иванов",
-            "id_4": "Артемов",
-            "id_5": "Дмитриев",
-            "id_6": "Михайлов",
-            "id_7": "Данилов",
-            "id_8": "Егоров",
-            "id_9": "Андреев",
-            "id_10": "Сергеев"
-        }
-    }`,
-
     professionMaleJson:`{
         "count": 10,
         "list": {     
@@ -154,11 +138,34 @@ const personGenerator = {
     },
 
     randomMiddleName: function(gender) {
+        middleName = this.randomValue(this.firstNameMaleJson);
+
         if (gender == this.GENDER_MALE) {
 
-            return this.randomValue(this.middleNameJson) + "ич";
+            if(middleName.includes('ий') || middleName.includes('ей')) {
+                return middleName.replace("й", "евич")
 
-        } else return this.randomValue(this.middleNameJson) + "на";
+            } else if (middleName.includes('Никита')) { //исключение
+                return middleName.replace('а', 'ич')
+
+            } else if (middleName.includes('аил')) {
+                return middleName.replace('ил', 'йлович')
+
+            } else return middleName + 'ович'
+    
+        } else if (gender == this.GENDER_FEMALE) {
+
+            if(middleName.includes('ий')|| middleName.includes('ей')) {
+                return middleName.replace('й', 'евна')
+
+            } else if (middleName.includes('Никита')) {
+                return middleName.replace('а', 'ична')
+            
+            } else if (middleName.includes('аил')) {
+                return middleName.replace('ил', 'йловна')
+
+            } else return middleName + 'овна'
+        }
     },
 
     randomGender: function() {
